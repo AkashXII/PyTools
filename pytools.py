@@ -101,7 +101,8 @@ def currency_converter():
     amount = float(input("Enter amount: "))
     from_curr = input("From currency (e.g., USD, INR, EUR): ").upper()
     to_curr = input("To currency (e.g., USD, INR, EUR): ").upper()
-    url=f"https://api.exchangerate.host/convert?from={from_curr}&to={to_curr}&amount={amount}"
+    access_key = "abd700ce70a6c5a96e87372b78261c73"
+    url = f"http://api.exchangeratesapi.io/v1/convert?access_key={access_key}&from={from_curr}&to={to_curr}&amount={amount}"
     try:
         response=requests.get(url)
         if response.status_code == 200:
@@ -143,5 +144,5 @@ while True:
         currency_converter()
     else:
         print("Enter a valid choice")
-#abd700ce70a6c5a96e87372b78261c73
+
 
