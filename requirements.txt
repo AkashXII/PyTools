@@ -1,0 +1,4 @@
+qrcode[pil]
+pyfiglet
+psutil
+requests

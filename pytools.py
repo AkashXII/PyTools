@@ -126,6 +126,7 @@ while True:
     print("2 - File Organiser")
     print("3 - PC Stats")
     print("4 - ASCII Art Converter")
+    print("5 - Currency Conversion")
     print("00 - Exit")
     choice = input("Enter Your Option: ").strip()
     if choice == "00":
