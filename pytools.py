@@ -5,6 +5,7 @@ import shutil
 import psutil
 import platform
 from datetime import datetime
+import requests
 
 def qr_code(): #qr code
     data = input("Enter text or URL to generate QR code: ")
@@ -95,6 +96,26 @@ def pc_stats(): #pc stats
     print(f"Cores: {psutil.cpu_count(logical=False)}")
     print(f"Threads: {psutil.cpu_count(logical=True)}")
     print(f"Usage: {psutil.cpu_percent(interval=1)}%")
+
+def currency_converter():
+    amount = float(input("Enter amount: "))
+    from_curr = input("From currency (e.g., USD, INR, EUR): ").upper()
+    to_curr = input("To currency (e.g., USD, INR, EUR): ").upper()
+    url=f"https://api.exchangerate.host/convert?from={from_curr}&to={to_curr}&amount={amount}"
+    try:
+        response=requests.get(url)
+        if response.status_code == 200:
+            data=response.json()
+            result=data.get("result")
+            if result:
+                print(f"\n{amount} {from_curr} = {result:.2f} {to_curr}\n")
+            else:
+                print("Conversion error.")
+        else:
+            print("API error.")
+    except Exception as e:
+        print(f"Error: {e}")               
+
 #main handle
 pop="Hello!"
 ascii_art = pyfiglet.figlet_format(pop)
@@ -117,5 +138,9 @@ while True:
         pc_stats()
     elif choice == "4":
         ascii()
+    elif choice=="5":
+        currency_converter()
     else:
         print("Enter a valid choice")
+#abd700ce70a6c5a96e87372b78261c73
+
